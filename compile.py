@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 
 INCLUDE_EXTENSIONS = {
     ".py", ".ipynb", ".md", ".txt", ".json", ".yaml", ".yml", ".toml", ".ini", ".cfg", ".rst",
@@ -161,6 +162,9 @@ def compile_project(directory, output_filename="compiled_project.txt", as_markdo
                 continue
             filepath = os.path.join(root, file)
             rel_path = os.path.relpath(filepath, directory)
+            rel_path = rel_path.replace("\\", "/")
+
+            
             if is_included_file(filepath):
                 included_files.append(rel_path)
 
@@ -289,10 +293,18 @@ if __name__ == "__main__":
     
     # After writing the file:
     if args.open:
-        try:
-            import subprocess
-            subprocess.run(["code", args.output], check=True)
-        except Exception as e:
-            print("Could not open in VS Code. Falling back to web browser.")
+        if shutil.which("code") or os.name == "nt":  # lenient check
+            try:
+                import subprocess
+                subprocess.run(["code", args.output], check=True)
+            except Exception as e:
+                print("Could not open in VS Code. Falling back to web browser.")
+                import webbrowser
+                webbrowser.open(args.output)
+        else:
+            print("VS Code CLI not found. Falling back to web browser.")
             import webbrowser
             webbrowser.open(args.output)
+
+        
+

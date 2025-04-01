@@ -3,7 +3,7 @@
   "output_file": "/home/vinci/Documents/Repos/project-compiler/this_repo.md",
   "markdown": true,
   "tree": true,
-  "open": false,
+  "open": true,
   "normalize_eol": false,
   "max_size": 2000000,
   "min_lines": 0

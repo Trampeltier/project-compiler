@@ -2,20 +2,21 @@
 <summary>📁 Project Structure</summary>
 
 ```
-├── compile.py (11 KB, 298 lines)
+├── compile.py (11 KB, 310 lines)
 ├── README.md (0 KB, 12 lines)
-├── gui_launcher.py (9 KB, 267 lines)
+├── gui_launcher.py (9 KB, 269 lines)
 └── compiler_config.json (0 KB, 10 lines)
 ```
 </details>
 
 
 <details>
-<summary><a name="compile-py"></a>`compile.py` (11 KB, 298 lines)</summary>
+<summary><a name="compile-py"></a>`compile.py` (11 KB, 310 lines)</summary>
 
 ````python
 import os
 import json
+import shutil
 
 INCLUDE_EXTENSIONS = {
     ".py", ".ipynb", ".md", ".txt", ".json", ".yaml", ".yml", ".toml", ".ini", ".cfg", ".rst",
@@ -177,6 +178,9 @@ def compile_project(directory, output_filename="compiled_project.txt", as_markdo
                 continue
             filepath = os.path.join(root, file)
             rel_path = os.path.relpath(filepath, directory)
+            rel_path = rel_path.replace("\\", "/")
+
+            
             if is_included_file(filepath):
                 included_files.append(rel_path)
 
@@ -305,13 +309,21 @@ if __name__ == "__main__":
     
     # After writing the file:
     if args.open:
-        try:
-            import subprocess
-            subprocess.run(["code", args.output], check=True)
-        except Exception as e:
-            print("Could not open in VS Code. Falling back to web browser.")
+        if shutil.which("code") or os.name == "nt":  # lenient check
+            try:
+                import subprocess
+                subprocess.run(["code", args.output], check=True)
+            except Exception as e:
+                print("Could not open in VS Code. Falling back to web browser.")
+                import webbrowser
+                webbrowser.open(args.output)
+        else:
+            print("VS Code CLI not found. Falling back to web browser.")
             import webbrowser
             webbrowser.open(args.output)
+
+        
+
 
 ````
 </details>
@@ -338,13 +350,13 @@ python3 gui_launcher.py
 
 
 <details>
-<summary><a name="gui-launcher-py"></a>`gui_launcher.py` (9 KB, 267 lines)</summary>
+<summary><a name="gui-launcher-py"></a>`gui_launcher.py` (9 KB, 269 lines)</summary>
 
 ```python
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import subprocess
-import os
+import os, sys
 import json
 
 
@@ -416,7 +428,9 @@ def run_compilation():
         messagebox.showerror("Error", "Please select a valid project directory.")
         return
 
-    cmd = ["python", "compile.py", directory]
+    cmd = [sys.executable, "compile.py", directory]
+
+    # cmd = ["python", "compile.py", directory]
 
     cmd += ["--output", output]
     
@@ -621,7 +635,7 @@ root.mainloop()
   "output_file": "/home/vinci/Documents/Repos/project-compiler/this_repo.md",
   "markdown": true,
   "tree": true,
-  "open": false,
+  "open": true,
   "normalize_eol": false,
   "max_size": 2000000,
   "min_lines": 0

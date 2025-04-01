@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import subprocess
-import os
+import os, sys
 import json
 
 
@@ -73,7 +73,9 @@ def run_compilation():
         messagebox.showerror("Error", "Please select a valid project directory.")
         return
 
-    cmd = ["python", "compile.py", directory]
+    cmd = [sys.executable, "compile.py", directory]
+
+    # cmd = ["python", "compile.py", directory]
 
     cmd += ["--output", output]
     
