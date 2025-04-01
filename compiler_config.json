@@ -1,0 +1,10 @@
+{
+  "project_dir": "/home/vinci/Documents/Repos/project-compiler/",
+  "output_file": "/home/vinci/Documents/Repos/project-compiler/this_repo.md",
+  "markdown": true,
+  "tree": true,
+  "open": false,
+  "normalize_eol": false,
+  "max_size": 2000000,
+  "min_lines": 0
+}
