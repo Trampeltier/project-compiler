@@ -1,4 +1,4 @@
-This repo provides a simple tool to compile all important files in your project into a single Markdown or text file — perfect for sharing with an LLM like ChatGPT.
+This repo provides a simple tool to compile all important files in your project into a single Markdown or text file — perfect for sharing with an LLM.
 
 It includes a visual structure tree and collapsible code sections for easy navigation.
 
