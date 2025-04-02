@@ -1,6 +1,6 @@
 {
-  "project_dir": "/home/vinci/Documents/ExternalRepos/chatgpt-history-export-to-md",
-  "output_file": "/home/vinci/Documents/Repos/project-compiler/chatgpt-history-export-to-md.md",
+  "project_dir": "/home/vinci/Documents/Repos/project-compiler",
+  "output_file": "/home/vinci/Documents/Repos/project-compiler/this_repo.md",
   "markdown": true,
   "tree": true,
   "open": true,

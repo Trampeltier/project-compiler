@@ -3,7 +3,7 @@
 
 ```
 ├── compile.py (11 KB, 310 lines)
-├── README.md (0 KB, 12 lines)
+├── README.md (0 KB, 16 lines)
 ├── gui_launcher.py (9 KB, 269 lines)
 └── compiler_config.json (0 KB, 10 lines)
 ```
@@ -330,7 +330,7 @@ if __name__ == "__main__":
 
 
 <details>
-<summary><a name="readme-md"></a>`README.md` (0 KB, 12 lines)</summary>
+<summary><a name="readme-md"></a>`README.md` (0 KB, 16 lines)</summary>
 
 ````markdown
 This repo provides a simple tool to compile all important files in your project into a single Markdown or text file — perfect for sharing with an LLM.
@@ -345,6 +345,10 @@ Just clone the repo and run:
 ```bash
 python3 gui_launcher.py
 ```
+
+Here is a screenshot of the GUI, showing several functionalities:
+
+![alt text](GUI.png)
 ````
 </details>
 
@@ -631,7 +635,7 @@ root.mainloop()
 
 ```json
 {
-  "project_dir": "/home/vinci/Documents/Repos/project-compiler/",
+  "project_dir": "/home/vinci/Documents/Repos/project-compiler",
   "output_file": "/home/vinci/Documents/Repos/project-compiler/this_repo.md",
   "markdown": true,
   "tree": true,
