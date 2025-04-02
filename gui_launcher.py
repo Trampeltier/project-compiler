@@ -4,7 +4,6 @@ import subprocess
 import os, sys
 import json
 
-
 class Tooltip:
     def __init__(self, widget, text):
         self.widget = widget
