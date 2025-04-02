@@ -12,4 +12,4 @@ python3 gui_launcher.py
 ```
 
 Here is a screenshot of the GUI, showing several functionalities:
-![alt text](GUI.png)
+![alt text](GUI_example.png)
