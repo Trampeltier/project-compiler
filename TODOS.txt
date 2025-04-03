@@ -1,0 +1,10 @@
+
+- I want to create a new config with name corresponding to each new compilation name, so that if you have different projects compiled,
+you'd not lose the config of the projects...
+
+- Options to exclude specific files
+
+- A statistics display showing how many files of each type, and how much total content of each set of file types
+
+
+- If possible, a way to chunk the project better into managable sizes, to suite it to the context window of LLMs

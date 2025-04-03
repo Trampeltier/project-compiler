@@ -250,6 +250,9 @@ def compile_project(directory, output_filename="compiled_project.txt", as_markdo
                 except Exception as e:
                     print(f"Skipping {rel_path} due to error: {e}")
 
+    # Create directory if it does not exist
+    os.makedirs(os.path.dirname(output_filename), exist_ok=True)
+    
     
     with open(output_filename, "w", encoding="utf-8") as output_file:
         output_file.write("\n".join(output_lines))

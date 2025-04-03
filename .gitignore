@@ -1,1 +1,3 @@
 /.venv/
+/compiled_projects/
+compiler_config.json
